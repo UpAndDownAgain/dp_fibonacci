@@ -1,7 +1,14 @@
 package com.company;
 
 
+import java.util.ArrayList;
+
 public class Fibonacci{
+    Fibonacci(){
+        prepTable(3);
+    }
+    private long[] table;
+
     /**
      * vypocita N ty prvek fibonacciho posloupnosti rekurzivne
      * @param n prvek k vypoctu
@@ -21,14 +28,15 @@ public class Fibonacci{
      * @return Nty prvek posloupnosti
      */
     public long calcRekTable(int n){
-        long[] arr = new long[n+2];
-        arr[0] = 0;
-        arr[1] = 1;
+        if(n <= 1) return n;
 
-        for(int i = 2; i <= n; ++i){
-            arr[i] = arr[i-1] + arr[i-2];
+        if(table.length <= n){
+            prepTable(n+1);
         }
-        return arr[n];
+        if(table[n] == -1){
+            table[n] = calcRekTable(n-1) + calcRekTable(n-2);
+        }
+        return table[n];
     }
 
     /**
@@ -49,6 +57,15 @@ public class Fibonacci{
             s = value;
         }
         return value;
+    }
+    private void prepTable(int n){
+        table = new long[n];
+        table[0] = 0;
+        table[1] = 1;
+
+        for(int i = 2; i < n; ++i){
+            table[i] = -1;
+        }
     }
 
 }
