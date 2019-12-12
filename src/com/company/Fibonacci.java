@@ -2,15 +2,12 @@ package com.company;
 
 
 public class Fibonacci{
-    public Fibonacci(){
-    }
-
     /**
      * vypocita N ty prvek fibonacciho posloupnosti rekurzivne
      * @param n prvek k vypoctu
      * @return Nty prvek fibonacciho posloupnosti
      */
-    public int calcRek(int n){
+    public long calcRek(int n){
         if(n <= 1) {
             return n;
         } else {
@@ -23,23 +20,8 @@ public class Fibonacci{
      * @param n prvek k vypoctu
      * @return Nty prvek posloupnosti
      */
-    public int calcRekTable(int n){
-        int[] arr = new int[n+2];
-        arr[0] = 0;
-        arr[1] = 1;
-
-
-    return n;
-
-    }
-
-    /**
-     * vypocet Nteho prvku fib posloupnosti nerekurzivne
-     * @param
-     * @return
-     */
-    public int calcNerek(int n){
-        int[] arr = new int[n+2];
+    public long calcRekTable(int n){
+        long[] arr = new long[n+2];
         arr[0] = 0;
         arr[1] = 1;
 
@@ -48,4 +30,25 @@ public class Fibonacci{
         }
         return arr[n];
     }
+
+    /**
+     * vypocet Nteho prvku fib posloupnosti nerekurzivne
+     * @param n prvek k vypoctu
+     * @return hodnota Nteho prvku
+     */
+    public long calcNerek(int n) {
+        if(n <= 1) return n;
+
+        long f = 0;
+        long s = 1;
+        long value = 1;
+
+        for(int i = 2; i <= n ; ++i){
+            value = f + s;
+            f = s;
+            s = value;
+        }
+        return value;
+    }
+
 }
