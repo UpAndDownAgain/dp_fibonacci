@@ -5,7 +5,13 @@ import java.util.ArrayList;
 
 public class Fibonacci{
     Fibonacci(){
-        prepTable(3);
+        table = new long[10];
+        table[0] = 0;
+        table[1] = 1;
+
+        for(int i = 2; i < 10; ++i){
+            table[i] = -1;
+        }
     }
     private long[] table;
 
@@ -31,7 +37,7 @@ public class Fibonacci{
         if(n <= 1) return n;
 
         if(table.length <= n){
-            prepTable(n+1);
+            resizeTable(n+1);
         }
         if(table[n] == -1){
             table[n] = calcRekTable(n-1) + calcRekTable(n-2);
@@ -58,12 +64,14 @@ public class Fibonacci{
         }
         return value;
     }
-    private void prepTable(int n){
+    private void resizeTable(int n){
+        long[] tmp = table;
         table = new long[n];
-        table[0] = 0;
-        table[1] = 1;
-
-        for(int i = 2; i < n; ++i){
+        int i = 0;
+        for(; i < tmp.length; ++i){
+            table[i] = tmp[i];
+        }
+        for(;i < table.length; ++i){
             table[i] = -1;
         }
     }
