@@ -1,12 +1,8 @@
 package com.company;
 
-import jdk.jshell.spi.ExecutionControl;
-
-import java.util.ArrayList;
 
 public class Fibonacci{
     public Fibonacci(){
-        array = new ArrayList<Integer>();
     }
 
     /**
@@ -21,13 +17,35 @@ public class Fibonacci{
             return calcRek(n-1) + calcRek(n-2);
         }
     }
+
+    /**
+     * vypocita Nty prvek fibonacciho posloupnosti s pouzitim tabulky
+     * @param n prvek k vypoctu
+     * @return Nty prvek posloupnosti
+     */
     public int calcRekTable(int n){
-        throw new UnsupportedOperationException();
+        int[] arr = new int[n+2];
+        arr[0] = 0;
+        arr[1] = 1;
+
+
+    return n;
+
     }
+
+    /**
+     * vypocet Nteho prvku fib posloupnosti nerekurzivne
+     * @param
+     * @return
+     */
     public int calcNerek(int n){
-        throw new UnsupportedOperationException();
+        int[] arr = new int[n+2];
+        arr[0] = 0;
+        arr[1] = 1;
+
+        for(int i = 2; i <= n; ++i){
+            arr[i] = arr[i-1] + arr[i-2];
+        }
+        return arr[n];
     }
-
-
-    private ArrayList<Integer> array;
 }
