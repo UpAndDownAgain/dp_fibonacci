@@ -64,6 +64,12 @@ public class Fibonacci{
         }
         return value;
     }
+
+    /**
+     * pomocna trida pro zvetseni velikosti table
+     * vytvori novy table do ktereho nasledne prekopiruje uz vypoctene hodnoty
+     * @param n velikost noveho table
+     */
     private void resizeTable(int n){
         long[] tmp = table;
         table = new long[n];
