@@ -37,7 +37,7 @@ public class Fibonacci{
             resizeTable(n+1);
         }
         if(table[n] == -1){
-            table[n] = calcRekTable(n-1) + calcRekTable(n-2);
+            return table[n] = calcRekTable(n-1) + calcRekTable(n-2);
         }
         return table[n];
     }
